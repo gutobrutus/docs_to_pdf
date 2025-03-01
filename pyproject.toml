@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "docs-to-pdf"
+version = "0.1.0"
+description = "Conversor de arquivos DOC, DOCX e ODT para PDF usando LibreOffice."
+authors = ["Guto Ribeiro <guto@email.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0"  # para testes, por exemplo
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+converter = "docs_to_pdf.cli:app"
