@@ -1,6 +1,7 @@
 import os
 import subprocess
 import logging
+import time
 
 class DocumentConverter:
     """Classe responsável por buscar e converter documentos para PDF."""
@@ -55,6 +56,12 @@ class DocumentConverter:
         """
         Busca todos os arquivos suportados e realiza a conversão para cada um.
         """
+        start_time = time.perf_counter()
         files = self.get_files()
+        if not files:
+            logging.info("No compatible files found in: %s", self.input_directory)
+            return
         for filepath in files:
             self.convert_file(filepath)
+        total_time = time.perf_counter() - start_time
+        logging.info("Total execution time: %.2f seconds", total_time)
